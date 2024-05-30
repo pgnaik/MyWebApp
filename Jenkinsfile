@@ -5,21 +5,21 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from GitHub
-                git url: 'https://github.com/username/repository.git', branch: 'main'
+                git url: 'https://github.com/pgnaik/MyWebApp.git', branch: 'master'
             }
         }
 
         stage('Build') {
             steps {
                 // Build the Maven project
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
 
         stage('Test') {
             steps {
                 // Run tests
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
