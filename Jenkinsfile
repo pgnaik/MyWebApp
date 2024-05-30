@@ -41,11 +41,7 @@ pipeline {
     }
 
     post {
-        always {
-            // Archive artifacts from the MyApp directory
-            archiveArtifacts artifacts: 'MyApp/target/*.war', allowEmptyArchive: true
-            junit 'MyApp/target/surefire-reports/*.xml'
-        }
+        
 
         success {
             echo 'Build succeeded!'
