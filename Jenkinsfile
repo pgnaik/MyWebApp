@@ -31,11 +31,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo "Deploying"
-                // Navigate to the MyApp directory and deploy the application (example)
-                // dir('MyApp') {
-                //     bat 'mvn deploy' // Uncomment and configure as needed
-                // }
+                echo "Deploying to Tomcat Container" 
+                deploy adapters: [tomcat9(credentialsId: '9aa5ca8b-299a-4710-9c4c-9c43833ac983', path: '', url: 'http://localhost:9000')], contextPath: null, war: '**/*.war'
             }
         }
     }
