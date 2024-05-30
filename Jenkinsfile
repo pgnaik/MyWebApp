@@ -14,9 +14,9 @@ pipeline {
         stage('Build') {
             steps {
                 // Navigate to the MyApp directory and run Maven build
-                dir('MyApp') {
+                
                     bat 'mvn clean install -f MyApp/pom.xml'
-                }
+                
             }
         }
 
