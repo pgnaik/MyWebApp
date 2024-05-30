@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    tools{
+        maven 'Maven3'
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -13,7 +15,7 @@ pipeline {
             steps {
                 // Navigate to the MyApp directory and run Maven build
                 dir('MyApp') {
-                    bat 'mvn clean install'
+                    bat 'mvn clean install -f MyApp/pom.xml'
                 }
             }
         }
