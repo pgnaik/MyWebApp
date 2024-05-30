@@ -5,37 +5,43 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from GitHub
-                git url: 'https://github.com/pgnaik/MyWebApp.git', branch: 'master'
+                git url: 'https://github.com/pgnaik/MyApp.git', branch: 'master'
             }
         }
 
         stage('Build') {
             steps {
-                // Build the Maven project
-                bat 'mvn clean install'
+                // Navigate to the MyApp directory and run Maven build
+                dir('MyApp') {
+                    bat 'mvn clean install'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                // Run tests
-                bat 'mvn test'
+                // Navigate to the MyApp directory and run Maven tests
+                dir('MyApp') {
+                    bat 'mvn test'
+                }
             }
         }
 
         stage('Deploy') {
             steps {
-                echo "Deploying the application..."
-                // sh 'mvn deploy' // Uncomment and configure as needed
+                // Navigate to the MyApp directory and deploy the application (example)
+                // dir('MyApp') {
+                //     bat 'mvn deploy' // Uncomment and configure as needed
+                // }
             }
         }
     }
 
     post {
         always {
-            // Clean up and archive artifacts
-            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
-            junit 'target/surefire-reports/*.xml'
+            // Archive artifacts from the MyApp directory
+            archiveArtifacts artifacts: 'MyApp/target/*.war', allowEmptyArchive: true
+            junit 'MyApp/target/surefire-reports/*.xml'
         }
 
         success {
