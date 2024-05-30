@@ -25,7 +25,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Deploy the application (example)
+                echo "Deploying the application..."
                 // sh 'mvn deploy' // Uncomment and configure as needed
             }
         }
