@@ -31,6 +31,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
+                echo "Deploying"
                 // Navigate to the MyApp directory and deploy the application (example)
                 // dir('MyApp') {
                 //     bat 'mvn deploy' // Uncomment and configure as needed
