@@ -4,7 +4,7 @@ FROM tomcat:9.0
 ADD ./target/*.war /usr/local/tomcat/webapps/
 
 # Expose port 9000
-EXPOSE 9000
+EXPOSE 8080
 
 # Set the working directory to Tomcat's bin directory
 WORKDIR /usr/local/tomcat/bin
